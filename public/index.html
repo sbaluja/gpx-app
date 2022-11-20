@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>GPS Data Viewer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="CHANGE ME">
+    <meta name="keywords" content="CHANGE ME">
+    <meta name="author" content="Saarthi Baluja">
+    <!-- Load jquery, bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <!-- Custom CSS End -->
+</head>
+
+<body>
+    <h3>A GPX Handler</h3>
+    This is a GPX File handler program. Upload a GPX file or create your own GPX file! Add routes, find paths, and view components.<br>
+    <p></p>
+
+
+    <div style="overflow:auto;height:100px">
+        <table id="FileLogPanel">
+          <tr>
+            <th>File name (click to download)</th>
+            <th>Version</th>
+            <th>Creator</th>
+            <th>Number of Waypoints</th>
+            <th>Number of Routes</th>
+            <th>Number of Tracks</th>
+          </tr>
+        </table>
+      </div>
+
+    <label for="dropdown">Choose a GPX File:</label>
+    <select name="dropdown" id="GPXFiles">
+      <option></option>
+    </select>
+
+    <div style="overflow:auto;">
+        <table id="GPXViewPanel1" class = "sel-table">
+          <tr>
+            <th>Component</th>
+            <th>Name</th>
+            <th>Number of Points</th>
+            <th>Length</th>
+            <th>Loop</th>
+          </tr>
+        </table>
+    </div>
+
+    <form id = "dialog">
+      <input id = "ShowOtherData" type="submit" value="Show Other Data"><br>
+      <input type="text" id="RenameEntry" placeholder="Ex. Route 1">
+      <input id = "Rename" type="submit" value="Rename">
+    </form><br>
+
+    <h3>Upload your file!</h3>
+    
+    <form ref='uploadForm'
+		id='uploadForm'
+      action='/upload'
+      method='post'
+      encType="multipart/form-data">
+      <div class="form-group">
+      	<input type="file" name="uploadFile" class="btn btn-secondary" id = "uploader">
+      	<input type='submit' id value='Upload GPX' class="btn btn-secondary">
+      </div>
+`   </form>
+
+<h3>Create your GPX!</h3>
+
+    <form id='createGPX' class="form-group">
+        <label for="Filename">GPX Filename</label>
+        <input type="text" id="Filename" placeholder="example.gpx">
+        <label for="Version">Version</label>
+        <input type="text" id="Version" placeholder="1.1">
+        <label for="Creator">Creator</label>
+        <input type="text" id="Creator" placeholder="Ex. John"><br>
+    <input type='submit' value = "Create!" class="btn btn-secondary">
+  </form>
+
+
+  <h3>Add a Route</h3>
+
+  <label for="dropdown">Choose a GPX File:</label>
+    <select name="dropdown" id="GPXFiles2">
+        <option id="option1"></option>
+    </select>
+
+    <form id="createRoute" class="form-group">
+        <label for="RouteName">Route name</label>
+        <input type="text" id="RouteName" placeholder="Ex. Fun Route!">
+        <label for="NumberofWaypoints">Number of Points</label>
+        <input type="text" id="NumberofWaypoints" placeholder="Ex. 3"><br>
+        <input type="submit" value = "Create Route!" class="btn btn-secondary">
+  </form>
+
+  <div id="popUpForm" title="Title"></div>
+  
+  <h3>Find Path Between</h3>
+
+  <form id='FindPath' class = "form-group">
+    <label for="P1 Latitude">Point 1 Latitude</label>
+    <input type="text" id="P1Latitude" placeholder="Ex. 3"><br>
+    <label for="P1Longitude">Point 1 Longitude</label>
+    <input type="text" id="P1Longitude" placeholder="54.34"><br>
+    <label for="P2Latitude">Point 2 Latitude</label>
+    <input type="text" id="P2Latitude" placeholder="Ex. 3"><br>
+    <label for="P2Longitude">Point 2 Longitude</label>
+    <input type="text" id="P2Longitude" placeholder="54.34">
+    <input type='submit' value = "Find Path!" class="btn btn-secondary">
+</form>
+
+<div style="overflow:auto;">
+    <table id="GPXViewPanel2">
+      <tr>
+        <th>Component</th>
+        <th>Name</th>
+        <th>Number of Points</th>
+        <th>Length</th>
+        <th>Loop</th>
+      </tr>
+    </table>
+</div>
+
+
+
+    <!-- Leave me at the bottom of body -->
+    <script src="/index.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
